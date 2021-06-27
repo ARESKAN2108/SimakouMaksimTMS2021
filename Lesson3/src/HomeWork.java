@@ -101,7 +101,9 @@ public class HomeWork {
                 System.out.println(count + " программист");
             } else if (devsCount >= 2 && devsCount <= 4) {
                 System.out.println(count + " программиста");
-            } else System.out.println(count + " программистов");
+            } else {
+                System.out.println(count + " программистов");
+            }
         } else {
             System.out.println(count + " программистов");
         }
@@ -188,7 +190,9 @@ public class HomeWork {
                     System.out.print("+ ");
                 } else if (array[i][j] % 7 == 0) {
                     System.out.print("- ");
-                } else System.out.print("* ");
+                } else {
+                    System.out.print("* ");
+                }
             }
             System.out.println();
         }
