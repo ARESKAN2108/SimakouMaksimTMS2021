@@ -26,6 +26,7 @@ public class HomeWork {
      * далее заполнить массив случайными значениями
      * далее вывести массив на консоль
      */
+
     private static void printArray() {
         // Можно еще через Random сделать.Я сделал через класс Math.
         System.out.println("Введите число:");
@@ -147,7 +148,6 @@ public class HomeWork {
             }
         }
         System.out.println("Сумма главной диагонали: " + sum);
-
     }
 
     /**
