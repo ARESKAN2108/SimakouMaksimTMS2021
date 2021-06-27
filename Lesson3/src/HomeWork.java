@@ -189,8 +189,6 @@ public class HomeWork {
                 } else if (array[i][j] % 7 == 0) {
                     System.out.print("- ");
                 } else System.out.print("* ");
-                ;
-
             }
             System.out.println();
         }
