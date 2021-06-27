@@ -51,15 +51,11 @@ public class HomeWork {
      */
 
     public static int operation(int number) {
-        Scanner scanner = new Scanner(System.in);
-        number = scanner.nextInt();
         if (number > 0) {
             number++;
-        }
-        if (number < 0) {
+        } else if (number < 0) {
             number = number - 2;
-        }
-        if (number == 0) {
+        } else {
             number = 10;
         }
         return number;
@@ -77,7 +73,7 @@ public class HomeWork {
             System.out.println("Array is empty");
         } else {
             for (int anInt : ints) {
-                if (anInt % 2 == 1 || anInt % 2 == -1 || anInt == 0) {
+                if (anInt % 2 != 0) {
                     count++;
                 }
             }
@@ -105,8 +101,7 @@ public class HomeWork {
             } else if (devsCount >= 2 && devsCount <= 4) {
                 System.out.println(count + " программиста");
             } else System.out.println(count + " программистов");
-        }
-        if (devsCount == 11 || devsCount == 12 || devsCount == 13 || devsCount == 14) {
+        } else {
             System.out.println(count + " программистов");
         }
     }
@@ -151,7 +146,7 @@ public class HomeWork {
                 }
             }
         }
-        System.out.println("Сумма главной диагонали " + sum);
+        System.out.println("Сумма главной диагонали: " + sum);
 
     }
 
@@ -178,24 +173,24 @@ public class HomeWork {
      * Обратите внимание, что 21% 3 == 0 и 21% 7 = 0, но выводить надо не +-, а +
      */
 
+
     public static void printMatrix() {
+        //В этом методе казалось все намного проще чем я придумал! Спасибо за совет!
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
         int heigh = scanner.nextInt();
         int width = scanner.nextInt();
         int[][] array = new int[heigh][width];
-        String[][] arrayStrings = new String[heigh][width];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 array[i][j] = random.nextInt(100);
-                if (array[i][j] % 7 == 0 & array[i][j] % 3 == 0) {
-                    arrayStrings[i][j] = "+";
-                } else if (array[i][j] % 3 == 0) {
-                    arrayStrings[i][j] = "+";
+                if (array[i][j] % 3 == 0) {
+                    System.out.print("+ ");
                 } else if (array[i][j] % 7 == 0) {
-                    arrayStrings[i][j] = "-";
-                } else arrayStrings[i][j] = "*";
-                System.out.print(arrayStrings[i][j] + " ");
+                    System.out.print("- ");
+                } else System.out.print("* ");
+                ;
+
             }
             System.out.println();
         }
