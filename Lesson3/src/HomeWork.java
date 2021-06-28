@@ -117,7 +117,7 @@ public class HomeWork {
      */
 
     public static void foobar(int number) {
-        if (number % 3 == 0 & number % 5 == 0) {
+        if (number % 3 == 0 && number % 5 == 0) {
             System.out.println("foobar");
         } else if (number % 3 == 0) {
             System.out.println("foo");
