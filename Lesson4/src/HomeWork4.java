@@ -1,7 +1,10 @@
+import java.util.Scanner;
+
 public class HomeWork4 {
     public static void main(String[] args) {
         amoeba();
         System.out.println("Результат вычисления умножения = " + summ(5, 6));
+        numbers();
     }
 
     // 1) Одноклеточная амеба каждые 3 часа делится на 2 клетки. Определить,
@@ -29,5 +32,26 @@ public class HomeWork4 {
 
     private static int summ(int a, int b) {
         return Math.multiplyExact(a, b);
+    }
+
+    // 4)В переменную записываем число.
+    // Надо вывести на экран сколько в этом числе цифр и положительное оно или отрицательное.
+    // Например, Введите число: 5
+    // "5 - это положительное число, количество цифр = 1"
+
+    private static void numbers() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите число: ");
+
+        int numberInput = scanner.nextInt();
+        int num = (int) Math.log10(numberInput) + 1;
+
+        if (numberInput > 0) {
+            System.out.println("\"" + numberInput + " - это положительное число, " + "количество цифр = " + num + "\"");
+        } else if (numberInput < 0) {
+            System.out.println("\"" + numberInput + " - это отрицательное число, " + "количество цифр = " + num + "\"");
+        } else {
+            System.out.println("Вы ввели ноль, попробуйте заново");
+        }
     }
 }
