@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class HomeWork4 {
@@ -6,6 +7,7 @@ public class HomeWork4 {
         System.out.println("Результат вычисления умножения = " + summ(5, 6));
         numbers();
         arrayReverse();
+        workWithArray();
     }
 
     // 1) Одноклеточная амеба каждые 3 часа делится на 2 клетки. Определить,
@@ -80,5 +82,28 @@ public class HomeWork4 {
         for (int i = array.length - 1; i >= 0; i--) {
             System.out.print(array[i] + " ");
         }
+    }
+
+    //        6) Создайте массив из int[] mass = new int[12]; Рандомно заполните его значениями от 0 до 15.
+    //        Определите какой элемент является в этом массиве максимальным и сообщите индекс его последнего вхождения в массив.
+    //        Пример: {3,4,5,62,7,8,4,-5,7,62,5,1} Максимальный элемент 62, индекс его последнего вхождения в массив = 10
+
+    private static void workWithArray() {
+
+        Random random = new Random();
+        int[] mass = new int[12];
+        int maxElement = 0;
+        int maxIndex = 0;
+
+        for (int i = 0; i < mass.length; i++) {
+            mass[i] = random.nextInt(15);
+            System.out.print(mass[i] + " ");
+            if (maxElement <= mass[i]) {
+                maxElement = mass[i];
+                maxIndex = i;
+            }
+        }
+        System.out.println();
+        System.out.println("Максимальный элемент " + maxElement + ", " + "индекс его последнего вхождения в массив " + maxIndex);
     }
 }
