@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public class HomeWork4 {
         arrayReverse();
         workWithArray();
         creatArray();
+        System.out.print(Arrays.toString(arrayAndNullElement(new int[]{4, 5, 0, 23, 77, 0, 8, 9, 101, 2})));
     }
 
     // 1) Одноклеточная амеба каждые 3 часа делится на 2 клетки. Определить,
@@ -34,7 +36,7 @@ public class HomeWork4 {
     //2) Напишите реализацию метода summ(int a, int b), вычисляющий a * b, не пользуясь операцией
     //умножения, где a и b целые числа, вызовите метод summ  в методе main и распечатайте на консоль.
 
-    private static int summ(int a, int b) {
+    public static int summ(int a, int b) {
         return Math.multiplyExact(a, b);
     }
 
@@ -62,7 +64,7 @@ public class HomeWork4 {
     // 5) Создайте массив из всех нечётных чисел от 1 до 100, выведите его на экран в строку,
     // а затем этот же массив выведите на экран тоже в строку, но в обратном порядке (99 97 95 93 ... 7 5 3 1).
 
-    public static void arrayReverse() {
+    private static void arrayReverse() {
 
         int sizeArray = 0;
         for (int i = 1; i < 100; i++) {
@@ -112,7 +114,7 @@ public class HomeWork4 {
     // Выведите массив на экран в строку. Замените каждый элемент с нечётным индексом на ноль.
     // Снова выведете массив на экран на отдельной строке.
 
-    public static void creatArray() {
+    private static void creatArray() {
         int[] mass = new int[20];
         Random random = new Random();
 
@@ -130,5 +132,29 @@ public class HomeWork4 {
             System.out.print(mass[i] + "\t");
         }
         System.out.println();
+    }
+
+    // 8) Найти максимальный элемент в массиве {4,5,0,23,77,0,8,9,101,2} и поменять его местами с нулевым элементом
+
+    public static int[] arrayAndNullElement(int[] mass) {
+        if (mass.length == 0) {
+            System.out.println("Array is empty");
+        } else {
+            int first = mass[0];
+            int temp = 0;
+            int max = 0;
+            for (int i = 0; i < mass.length; i++) {
+                if (mass[i] > max) {
+                    max = mass[i];
+                    temp = i;
+                }
+            }
+            for (int i = 0; i < mass.length; i++) {
+                mass[0] = max;
+                mass[temp] = first;
+            }
+            System.out.println(max);
+        }
+        return mass;
     }
 }
