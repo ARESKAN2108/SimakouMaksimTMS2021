@@ -11,6 +11,7 @@ public class HomeWork4 {
         workWithArray();
         creatArray();
         System.out.print(Arrays.toString(arrayAndNullElement(new int[]{4, 5, 0, 23, 77, 0, 8, 9, 101, 2})));
+        creatMatrix();
     }
 
     // 1) Одноклеточная амеба каждые 3 часа делится на 2 клетки. Определить,
@@ -156,5 +157,45 @@ public class HomeWork4 {
             System.out.println(max);
         }
         return mass;
+    }
+
+    // 10) Создаём квадратную матрицу, размер вводим с клавиатуры.
+    // Заполняем случайными числами в диапазоне от 0 до 50. И выводим на консоль(в виде матрицы).
+    // Далее необходимо транспонировать матрицу(1 столбец станет 1-й строкой, 2-й столбец - 2-й строкой и т. д.)
+    // Пример:
+    // 1 2 3 4      1 6 3 1
+    // 6 7 8 9      2 7 3 5
+    // 3 3 4 5      3 8 4 6
+    // 1 5 6 7      4 9 5 7
+
+    private static void creatMatrix() {
+        Random random = new Random();
+        Scanner scanner = new Scanner(System.in);
+        int size = scanner.nextInt();
+        int[][] mass = new int[size][size];
+
+        for (int i = 0; i < mass.length; i++) {
+            for (int j = 0; j < mass[i].length; j++) {
+                mass[i][j] = random.nextInt(50);
+                System.out.print(mass[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println("\n");
+
+        for (int i = 0; i < mass.length; i++) {
+            for (int j = i + 1; j < mass.length; j++) {
+                int temp = mass[i][j];
+                mass[i][j] = mass[j][i];
+                mass[j][i] = temp;
+            }
+        }
+
+        for (int i = 0; i < mass.length; i++) {
+            for (int j = 0; j < mass.length; j++) {
+                System.out.print(mass[i][j] + "\t");
+            }
+            System.out.println();
+        }
     }
 }
