@@ -5,6 +5,7 @@ public class HomeWork4 {
         amoeba();
         System.out.println("Результат вычисления умножения = " + summ(5, 6));
         numbers();
+        arrayReverse();
     }
 
     // 1) Одноклеточная амеба каждые 3 часа делится на 2 клетки. Определить,
@@ -52,6 +53,32 @@ public class HomeWork4 {
             System.out.println("\"" + numberInput + " - это отрицательное число, " + "количество цифр = " + num + "\"");
         } else {
             System.out.println("Вы ввели ноль, попробуйте заново");
+        }
+    }
+
+    // 5) Создайте массив из всех нечётных чисел от 1 до 100, выведите его на экран в строку,
+    // а затем этот же массив выведите на экран тоже в строку, но в обратном порядке (99 97 95 93 ... 7 5 3 1).
+
+    public static void arrayReverse() {
+
+        int sizeArray = 0;
+        for (int i = 1; i < 100; i++) {
+            if (i % 2 != 0) {
+                sizeArray++;
+            }
+        }
+        int[] array = new int[sizeArray];
+        for (int i = 1, b = 0; b < array.length; i++) {
+            if (i % 2 != 0) {
+                array[b] = i;
+                System.out.print(array[b] + " ");
+                b++;
+            }
+        }
+        System.out.println();
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            System.out.print(array[i] + " ");
         }
     }
 }
