@@ -156,10 +156,8 @@ public class HomeWork4 {
                     temp = i;
                 }
             }
-            for (int i = 0; i < mass.length; i++) {
-                mass[0] = max;
-                mass[temp] = first;
-            }
+            mass[0] = max;
+            mass[temp] = first;
             System.out.println(max);
         }
         return mass;
