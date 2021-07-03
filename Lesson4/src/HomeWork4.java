@@ -53,16 +53,16 @@ public class HomeWork4 {
     // "5 - это положительное число, количество цифр = 1"
 
     private static void numbers() {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите число: ");
 
-        int numberInput = scanner.nextInt();
-        int num = (int) Math.log10(numberInput) + 1;
+        int num = scanner.nextInt();
 
-        if (numberInput > 0) {
-            System.out.println("\"" + numberInput + " - это положительное число, " + "количество цифр = " + num + "\"");
-        } else if (numberInput < 0) {
-            System.out.println("\"" + numberInput + " - это отрицательное число, " + "количество цифр = " + num + "\"");
+        if (num > 0) {
+            System.out.println("\" " + num + " - это положительное число, " + "количество цифр = " + String.valueOf(num).length() + " \"");
+        } else if (num < 0) {
+            System.out.println("\" " + num + " - это отрицательное число, " + "количество цифр = " + String.valueOf(num).length() + " \"");
         } else {
             System.out.println("Вы ввели ноль, попробуйте заново");
         }
