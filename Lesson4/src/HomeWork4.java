@@ -38,7 +38,13 @@ public class HomeWork4 {
     //умножения, где a и b целые числа, вызовите метод summ  в методе main и распечатайте на консоль.
 
     public static int summ(int a, int b) {
-        return Math.multiplyExact(a, b);
+
+        int result = 0;
+
+        for (int i = 0; i < a; i++) {
+            result += b;
+        }
+        return result;
     }
 
     // 4)В переменную записываем число.
