@@ -47,7 +47,7 @@ public class HomeWork4 {
             result += b;
         }
         // тут мы добавляем минус в ife если одно из чисел было
-        // отрицательным
+        // отрицательным числом
         if (a < 0 || b < 0) {
             result = -(Math.abs(result));
         } else {
