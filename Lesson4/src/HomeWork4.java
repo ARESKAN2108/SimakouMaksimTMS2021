@@ -12,6 +12,7 @@ public class HomeWork4 {
         creatArray();
         System.out.print(Arrays.toString(arrayAndNullElement(new int[]{4, 5, 0, 23, 77, 0, 8, 9, 101, 2})));
         creatMatrix();
+        printMatrix();
     }
 
     // 1) Одноклеточная амеба каждые 3 часа делится на 2 клетки. Определить,
@@ -198,6 +199,69 @@ public class HomeWork4 {
         for (int i = 0; i < mass.length; i++) {
             for (int j = 0; j < mass.length; j++) {
                 System.out.print(mass[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+//        3) Дан двухмерный массив размерностью 4 на 4, необходимо нарисовать четыре треугольника вида
+
+//        a)                  b)
+//              *        *
+//            * *        * *
+//          * * *        * * *
+//        * * * *        * * * *
+//
+//        c)                  d)
+//        * * * *        * * * *
+//          * * *        * * *
+//            * *        * *
+//              *        *
+    public static void printMatrix() {
+        //1
+        int[][] mass = new int[4][4];
+        int value = 3;
+
+        for (int[] item : mass) {
+            for (int j = 0; j < item.length; j++) {
+                if (j >= value) {
+                    System.out.print("* ");
+                }
+            }
+            value--;
+            System.out.println();
+        }
+        System.out.println();
+        //2
+        int value1 = 3;
+
+        for (int[] ints : mass) {
+            for (int j = 0; j < ints.length; j++) {
+                if (j <= value1) {
+                    System.out.print("* ");
+                }
+            }
+            value1--;
+            System.out.println();
+        }
+        //3
+        for (int i = 0; i <= mass.length; i++) {
+            for (int j = 0; j < mass.length - i; j++) {
+                System.out.print("  ");
+            }
+            for (int j = i; j > 0; j--) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+        //4
+        for (int i = 0; i < mass.length; i++) {
+            for (int j = 0; j < i; j++) {
+                System.out.print("  ");
+            }
+            for (int j = i; j < mass.length; j++) {
+                System.out.print("* ");
             }
             System.out.println();
         }
