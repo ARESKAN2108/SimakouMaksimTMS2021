@@ -59,11 +59,12 @@ public class HomeWork4 {
         System.out.println("Введите число: ");
 
         int num = scanner.nextInt();
+        int lengthNumber = String.valueOf(Math.abs(num)).length();
 
         if (num > 0) {
-            System.out.println("\" " + num + " - это положительное число, " + "количество цифр = " + String.valueOf(num).length() + " \"");
+            System.out.println("\" " + num + " - это положительное число, " + "количество цифр = " + lengthNumber + " \"");
         } else if (num < 0) {
-            System.out.println("\" " + num + " - это отрицательное число, " + "количество цифр = " + String.valueOf(num).length() + " \"");
+            System.out.println("\" " + num + " - это отрицательное число, " + "количество цифр = " + lengthNumber + " \"");
         } else {
             System.out.println("Вы ввели ноль, попробуйте заново");
         }
