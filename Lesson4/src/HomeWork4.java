@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class HomeWork4 {
     public static void main(String[] args) {
         amoeba();
-        System.out.println("Результат вычисления умножения = " + summ(5, 6));
+        System.out.println("Результат вычисления умножения = " + summ(-5, 4));
         numbers();
         arrayReverse();
         workWithArray();
@@ -41,9 +41,17 @@ public class HomeWork4 {
     public static int summ(int a, int b) {
 
         int result = 0;
-
-        for (int i = 0; i < a; i++) {
+        // я понял в чём проблема была
+        // тут мы возвращаем модуль отрицательного числа чтобы выполнилось условие
+        for (int i = 0; i < Math.abs(a); i++) {
             result += b;
+        }
+        // тут мы добавляем минус в ife если одно из чисел было
+        // отрицательным
+        if (a < 0 || b < 0) {
+            result = -(Math.abs(result));
+        } else {
+            result = Math.abs(result);
         }
         return result;
     }
