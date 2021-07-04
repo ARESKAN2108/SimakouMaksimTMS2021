@@ -157,9 +157,9 @@ public class HomeWork4 {
                     temp = i;
                 }
             }
+            System.out.println(Arrays.toString(mass));
             mass[0] = max;
             mass[temp] = first;
-            System.out.println(max);
         }
         return mass;
     }
