@@ -46,9 +46,7 @@ public class HomeWork4 {
         for (int i = 0; i < Math.abs(a); i++) {
             result += b;
         }
-        // тут мы добавляем минус в ife если одно из чисел было
-        // отрицательным числом
-        if (a < 0 || b < 0) {
+        if (a < 0 ^ b < 0) {
             result = -(Math.abs(result));
         } else {
             result = Math.abs(result);
