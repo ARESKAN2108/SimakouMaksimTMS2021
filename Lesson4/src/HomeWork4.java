@@ -226,18 +226,15 @@ public class HomeWork4 {
     public static void printMatrix() {
         //1
         int[][] mass = new int[4][4];
-        int value = 3;
 
-        for (int[] item : mass) {
-            for (int j = 0; j < item.length; j++) {
-                if (j >= value) {
-                    System.out.print("* ");
-                }
+        for (int i = 0; i <= mass.length; i++) {
+            for (int j = i; j > 0; j--) {
+                System.out.print("* ");
             }
-            value--;
             System.out.println();
         }
         System.out.println();
+
         //2
         int value1 = 3;
 
