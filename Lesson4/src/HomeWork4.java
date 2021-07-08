@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class HomeWork4 {
     public static void main(String[] args) {
@@ -13,6 +11,8 @@ public class HomeWork4 {
         System.out.print(Arrays.toString(arrayAndNullElement(new int[]{4, 5, 0, 23, 77, 0, 8, 9, 101, 2})));
         creatMatrix();
         printMatrix();
+        differentElementOfArray(new int[]{0, 3, 46, 3, 2, 1, 0});
+        differentElementOfArray(new int[]{0, 34, 46, 31, 20, 1, 28});
     }
 
     // 1) Одноклеточная амеба каждые 3 часа делится на 2 клетки. Определить,
@@ -266,6 +266,33 @@ public class HomeWork4 {
             }
             for (int j = i; j < mass.length; j++) {
                 System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+//        9) Проверить, различны ли все элементы массива, если не различны то вывести элемент повторяющийся
+//        Пример: {0,3,46,3,2,1,2}
+//        Массив имеет повторяющиеся элементы 3, 2
+//        Пример: {0,34,46,31,20,1,28}
+//        Массив не имеет повторяющихся элементов
+
+    public static void differentElementOfArray(int[] mass) {
+        Set<Integer> repeats = new HashSet<>();
+        for (int i = 0; i < mass.length; i++) {
+            for (int j = i + 1; j < mass.length; j++) {
+                if (mass[i] == mass[j]) {
+                    repeats.add(mass[i]);
+                    break;
+                }
+            }
+        }
+        if (repeats.isEmpty()) {
+            System.out.println("Массив не имеет повторяющихся элементов");
+        } else {
+            System.out.print("Массив имеет повторяющиеся эелементы ");
+            for (Integer repeat : repeats) {
+                System.out.print(repeat + ", ");
             }
             System.out.println();
         }
