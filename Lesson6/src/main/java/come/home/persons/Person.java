@@ -1,11 +1,12 @@
 package come.home.persons;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
-
-@Getter
 @Setter
+@Getter
+
 public class Person {
     public static final String MALE = "Male";
     public static final String FEMALE = "Female";

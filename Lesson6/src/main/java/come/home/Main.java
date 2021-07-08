@@ -1,7 +1,11 @@
 package come.home;
 
+import come.home.military.MilitaryOffice;
 import come.home.persons.Address;
 import come.home.persons.Person;
+import come.home.registry.PersonRegistry;
+
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,8 +31,13 @@ public class Main {
         Address alexandrAddress = new Address("Беларусь", "Минск");
         Person alexandr = new Person(alexandrAddress, "Александр", 26, Person.MALE);
 
+        Person [] conscripts = {misha, nikolay, maks, victor, nastya, kostya, alexandr};
+        PersonRegistry personRegistry = new PersonRegistry(conscripts);
 
+        MilitaryOffice militaryOffice = new MilitaryOffice(personRegistry);
+        System.out.println(Arrays.toString(militaryOffice.getPersonRegistry().getPeopleAll()));
 
+      // System.out.println(Arrays.toString(conscripts));
 
     }
 }

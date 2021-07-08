@@ -1,6 +1,9 @@
 package come.home.registry;
 
 import come.home.persons.Person;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class PersonRegistry {
     //PersonRegistry содержит список людей (Person), которые могут быть призваны в армию
@@ -10,6 +13,18 @@ public class PersonRegistry {
         this.conscripts = conscripts;
     }
 
+    public Object[] getPeopleAll() {
+        List<String> peopleList = new ArrayList<>();
+        for (Person person : conscripts) {
+           // Address personsAddress = person.getAddress();
+            if (person.getAge() >= 18 && person.getAge() <= 27){
+                if (person.getSex().equals("Male")){
+                    peopleList.add(person.getName());
+                }
+            }
+        }
+        return peopleList.toArray();
+    }
 //        Домашка: 6 урок
 //        Необходимо написать военкомат.
 //        1) Создаем класс военкомат MilitaryOffice
@@ -26,7 +41,4 @@ public class PersonRegistry {
 //        г) вывести количество призывников у которых имя Александр.
 //
 //        5) Создать класс Main, наполнить PersonRegistry людьми, по желанию можно создавать людей через консоль
-
-
-
 }
