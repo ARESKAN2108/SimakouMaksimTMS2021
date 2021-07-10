@@ -20,7 +20,7 @@ public class Main {
         Person maks = new Person(maksAddress, "Максим", 24, Person.MALE);
 
         Address victorAddress = new Address("Беларусь", "Брест");
-        Person victor = new Person(victorAddress, "Виктор",18, Person.MALE);
+        Person victor = new Person(victorAddress, "Виктор", 18, Person.MALE);
 
         Address nastyaAddress = new Address("Беларусь", "Витебск");
         Person nastya = new Person(nastyaAddress, "Настя", 22, Person.FEMALE);
@@ -31,13 +31,22 @@ public class Main {
         Address alexandrAddress = new Address("Беларусь", "Минск");
         Person alexandr = new Person(alexandrAddress, "Александр", 26, Person.MALE);
 
-        Person [] conscripts = {misha, nikolay, maks, victor, nastya, kostya, alexandr};
+        Person[] conscripts = {misha, nikolay, maks, victor, nastya, kostya, alexandr};
         PersonRegistry personRegistry = new PersonRegistry(conscripts);
 
+        //создаем объект военкомат и делаем запрос на годных людей в данный момент у регистратуры
         MilitaryOffice militaryOffice = new MilitaryOffice(personRegistry);
-        System.out.println(Arrays.toString(militaryOffice.getPersonRegistry().getPeopleAll()));
+        System.out.print("Имена годных призывников от 18 до 27 лет: ");
+        System.out.println(militaryOffice.getAllConscripts());
 
-      // System.out.println(Arrays.toString(conscripts));
+        // Запрос количества призывников в данном городе
+        System.out.println(militaryOffice.countConscriptsOfCity("Минск"));
+
+        // запрос количества призывников от 25 до 27 лет
+        System.out.println(militaryOffice.countConscriptsByAge(25, 27));
+
+        // запрос количества призывников по имени
+        System.out.println(militaryOffice.getConscriptsByName("Александр"));
 
     }
 }

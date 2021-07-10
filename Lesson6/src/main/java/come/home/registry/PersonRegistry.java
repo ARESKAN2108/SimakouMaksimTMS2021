@@ -1,6 +1,8 @@
 package come.home.registry;
 
+import come.home.persons.Address;
 import come.home.persons.Person;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,18 +15,59 @@ public class PersonRegistry {
         this.conscripts = conscripts;
     }
 
-    public Object[] getPeopleAll() {
+    public List<String> getAllСonscripts() {
         List<String> peopleList = new ArrayList<>();
         for (Person person : conscripts) {
-           // Address personsAddress = person.getAddress();
-            if (person.getAge() >= 18 && person.getAge() <= 27){
-                if (person.getSex().equals("Male")){
+            if (person.getAge() >= 18 && person.getAge() <= 27) {
+                if (person.getSex().equals("Male")) {
                     peopleList.add(person.getName());
                 }
             }
         }
-        return peopleList.toArray();
+        return peopleList;
     }
+
+    // Проверка только по городу без учета возраста, но с проверкой пола
+    public int countConscriptsOfCity(String city) {
+        int count = 0;
+        for (Person person : conscripts) {
+            Address personsCity = person.getAddress();
+            if (personsCity.getCity().equals(city)) {
+                if (person.getSex().equals("Male")) {
+                    count++;
+                }
+            }
+        }
+        System.out.print("Количество годных призывников в городе " + city + ": ");
+        return count;
+    }
+
+    // проверка по возрасту
+    public int countConscriptsByAge(int minAge, int maxAge) {
+        int count = 0;
+        for (Person person : conscripts) {
+            if (person.getAge() >= minAge && person.getAge() <= maxAge) {
+                if (person.getSex().equals("Male")) {
+                    count++;
+                }
+            }
+        }
+        System.out.print("Количество годных призывников в возрасте от " + minAge + " до " + maxAge + " лет: ");
+        return count;
+    }
+
+    // проверка по имени
+    public int getConscriptsByName(String name) {
+        int count = 0;
+        for (Person person : conscripts) {
+            if (person.getName().equals(name)) {
+                count++;
+            }
+        }
+        System.out.print("Количество призывников по имени " + name + ": ");
+        return count;
+    }
+
 //        Домашка: 6 урок
 //        Необходимо написать военкомат.
 //        1) Создаем класс военкомат MilitaryOffice
