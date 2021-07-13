@@ -1,6 +1,6 @@
 package com.tms.transports;
 
-import com.tms.landTransport.Car;
+
 import lombok.Getter;
 import lombok.Setter;
 

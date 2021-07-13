@@ -1,9 +1,10 @@
 package com.tms.landTransport;
 
 import com.tms.transports.LandTransoprt;
-import com.tms.transports.Transport;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Scanner;
 
 @Getter
 @Setter
@@ -18,20 +19,27 @@ public class FreightCar extends LandTransoprt {
     }
 
 
-    public void getWeighting(double cargoWeight) {
-        if (cargoWeight < WEIGHT_IN_TONS ) {
-            System.out.println("Грузовик загружен");
-        } else {
-            System.out.println("Вам нужен грузовик побольше");
+    public String checkLiftingCapacity() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Введите массу груза в тоннах, которым вы хотите заполнить наш грузовик");
+            if (scanner.hasNextDouble()) {
+                double value = scanner.nextDouble();
+                if (value < WEIGHT_IN_TONS) {
+                    return "Грузовик будет загружен";
+                } else {
+                    return "Вам нужен грузовик побольше";
+                }
+            } else {
+                System.out.println("Вы ввели некорректные данные");
+                scanner.next();
+            }
         }
     }
-
 
     public String getInfoOfFreightCar() {
         return super.toString() +
                 "Грузовой: " +
                 "грузоподъемность: " + liftingCapacity + "т.";
     }
-
-
 }

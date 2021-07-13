@@ -19,21 +19,15 @@ public class Car extends LandTransoprt {
     }
 
     // не нравится мне стиль метода который я зделал
-    public void distanceCalculation(double time) {
+    public void calculateDistanceAndFuel(double time) {
         double distance = time * getMaxSpeed();
-        System.out.println("За время " + time + "ч, автомобиль "
-                + getBrand() + " двигаясь с максимальной скоростью "
-                + getMaxSpeed() + " проедет "
-                + distance + " и израсходует топлива "
-                + countFuelConsumption(Math.round(distance)) + " л.");
-       // return distance;
+        System.out.println("За время " + time + " ч, автомобиль " + getBrand() + " двигаясь с максимальной скоростью "
+                + getMaxSpeed() + "км/ч" + " проедет " + distance + " км и израсходует топлива " + countFuelConsumption(Math.round(distance)) + " л.");
     }
-
 
     private double countFuelConsumption(double distance) {
         return Math.floor(getFuelConsumption() / 100 * distance);
     }
-
 
     public String getInfoCar() {
         return super.toString() +

@@ -17,6 +17,23 @@ public class MilitaryTransport extends AirTransport {
         this.numberOfMissiles = numberOfMissiles;
     }
 
+    public void makeShot() {
+        if (numberOfMissiles > 0) {
+            System.out.println("Ракета пошла...");
+            numberOfMissiles--;
+        } else {
+            System.out.println("Боеприпасы отсутствуют");
+        }
+    }
+
+    public void checkEjectionSystem() {
+        if (ejectionSystem) {
+            System.out.println("Катапультирование прошло успешно");
+        } else {
+            System.out.println("У вас нет такой системы");
+        }
+    }
+
 
     public String getInfoOfMilitaryTransport() {
         return super.toString() +

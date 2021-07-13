@@ -24,5 +24,4 @@ public class LandTransoprt extends Transport {
                 ", расход топлива: " + fuelConsumption + " л/100км."
                 + " ";
     }
-
 }
