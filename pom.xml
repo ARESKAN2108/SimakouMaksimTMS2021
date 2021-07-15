@@ -13,12 +13,12 @@
         <maven.compiler.target>16</maven.compiler.target>
     </properties>
 
+    <packaging>pom</packaging>
+
     <modules>
         <module>Lesson5</module>
-        <module>Lesson7</module>
+        <module>Lesson6</module>     
     </modules>
-
-    <packaging>pom</packaging>
  
     <dependencies>
         <dependency>
@@ -28,5 +28,9 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <defaultGoal>clean install</defaultGoal>
+    </build>
 
 </project>
