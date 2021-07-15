@@ -22,11 +22,11 @@ public class Car extends LandTransoprt {
     public void calculateDistanceAndFuel(double time) {
         double distance = time * getMaxSpeed();
         System.out.println("За время " + time + " ч, автомобиль " + getBrand() + " двигаясь с максимальной скоростью "
-                + getMaxSpeed() + "км/ч" + " проедет " + distance + " км и израсходует топлива " + countFuelConsumption(Math.round(distance)) + " л.");
+                + getMaxSpeed() + "км/ч" + " проедет " + distance + " км и израсходует топлива " + countFuelConsumption(distance) + " л.");
     }
 
     private double countFuelConsumption(double distance) {
-        return Math.floor(getFuelConsumption() / 100 * distance);
+        return getFuelConsumption() * distance / 100;
     }
 
     public String getInfoCar() {

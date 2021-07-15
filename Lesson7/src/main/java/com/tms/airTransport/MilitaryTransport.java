@@ -29,6 +29,7 @@ public class MilitaryTransport extends AirTransport {
     public void checkEjectionSystem() {
         if (ejectionSystem) {
             System.out.println("Катапультирование прошло успешно");
+            ejectionSystem = false;
         } else {
             System.out.println("У вас нет такой системы");
         }

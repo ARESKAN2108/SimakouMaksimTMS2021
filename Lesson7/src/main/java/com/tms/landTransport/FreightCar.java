@@ -25,7 +25,7 @@ public class FreightCar extends LandTransoprt {
             System.out.println("Введите массу груза в тоннах, которым вы хотите заполнить наш грузовик");
             if (scanner.hasNextDouble()) {
                 double value = scanner.nextDouble();
-                if (value < WEIGHT_IN_TONS) {
+                if (value <= WEIGHT_IN_TONS) {
                     return "Грузовик будет загружен";
                 } else {
                     return "Вам нужен грузовик побольше";

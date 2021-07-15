@@ -23,17 +23,16 @@ public class Transport {
     @Override
     public String toString() {
         return "Информация транспорта: " +
-                "мощность = " + power + " л/c" +
+                "мощность = " + power + " л/c " +
+                "Мощность в киловаттах: " + CalculationPower(power) +
                 ", максимальная скорость: " + maxSpeed + "км/ч" +
                 ", масса: " + weight + "кг" +
                 ", марка: " + brand;
     }
 
-    public double powerCalculation(int power) {
+    public double CalculationPower(int power) {
         this.power = power;
-        double powerCalculate = power * 0.74;
-        System.out.print("Мощность в киловаттах = ");
-        return Math.floor(powerCalculate);
+        return power * 0.74;
     }
 
 }
