@@ -21,15 +21,15 @@ public class Main {
 
         car.calculateDistanceAndFuel(2.5); // вывод длинной строки про легковой автомобиль
 
-//        System.out.println(freightCar.checkLiftingCapacity()); // проверка грузоподъемности грузовика
-//
-//        System.out.println(civilTransport.checkCapacityPessengers()); // проверка на вместимость пассажиров
-//
-//        for (int i = militaryTransport.getNumberOfMissiles(); i >= 0; i--) { //стреляем пока не закончатся боеприпасы
-//            militaryTransport.makeShot();
-//        }
-//
-//        militaryTransport.checkEjectionSystem(); // проверка наличия катапультрования
+        System.out.println(freightCar.checkLiftingCapacity()); // проверка грузоподъемности грузовика
+
+        System.out.println(civilTransport.checkCapacityPessengers()); // проверка на вместимость пассажиров
+
+        for (int i = militaryTransport.getNumberOfMissiles(); i >= 0; i--) { //стреляем пока не закончатся боеприпасы
+            militaryTransport.makeShot();
+        }
+
+        militaryTransport.checkEjectionSystem(); // проверка наличия катапультрования
     }
 }
 
