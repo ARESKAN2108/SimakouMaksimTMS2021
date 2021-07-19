@@ -7,16 +7,26 @@ import lombok.Setter;
 @Setter
 public class GasTank {
     private final int totalTankVolume;
+    private double fuelQuantity;
 
-
-    public GasTank(int totalTankVolume) {
+    public GasTank(int totalTankVolume, double fuelQuantity) {
         this.totalTankVolume = totalTankVolume;
+        this.fuelQuantity = fuelQuantity;
+    }
+
+    public boolean getFuel() {
+        if (fuelQuantity > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public String toString() {
         return "GasTank{" +
                 "totalTankVolume=" + totalTankVolume +
+                ", fuelQuantity=" + fuelQuantity +
                 '}';
     }
 }

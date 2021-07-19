@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class Engine {
     private final String enginesType;
-    public final double volume;
+    private final double volume;
 
     public Engine(String enginesType, double volume) {
         this.enginesType = enginesType;

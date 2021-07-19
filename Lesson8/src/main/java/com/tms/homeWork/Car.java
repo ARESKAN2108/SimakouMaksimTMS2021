@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class Car {
     private final Engine engine;
-    private final GasTank gasTank;
+    private GasTank gasTank;
 
     public Car(Engine engine, GasTank gasTank) {
         this.engine = engine;
@@ -16,7 +16,12 @@ public class Car {
 
     public void carOn() {
         System.out.println("Заводим машину");
-        engine.engineOn();
+        if (gasTank.getFuel()) {
+            engine.engineOn();
+        }else {
+            System.out.println("Бак пустой, нужно заправиться");
+        }
+
     }
 
     public void wentCar() {
