@@ -16,8 +16,6 @@ public class Car {
     private int maxSpeed;
     private int price;
 
-    public Car() {
-    }
     // в методе объявляем о возможном выбрасывании исключения
     // которое мы создали сами в отдельном классе
     public void startCar() throws ExceptionCar {
