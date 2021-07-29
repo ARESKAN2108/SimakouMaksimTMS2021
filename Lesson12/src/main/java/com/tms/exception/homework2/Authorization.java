@@ -4,17 +4,17 @@ import java.util.Scanner;
 
 public class Authorization {
 
-    private static final String CORRECT_LOGIN = "Логин должен быть из латинских букв, цифр и знака подчеркивания.\nЛибо вы ввели больше 20 символов\nВведите повторно";
-    private static final String CORRECT_PASSWORD = "Пароль должен быть из латинских букв, цифр и знака подчеркивания.\nЛибо вы ввели больше 20 символов\nВведите повторно";
-    private static final String PASSWORD_MISMATCH = "Пароли не совпадают. Введите пароль заново: ";
+    private static final String CORRECT_LOGIN = "Логин может содержать латинские буквы, цифры либо, знак: \"_\".\nНе менее 3-ех символов и не более 20-ти.\nВведите повторно:";
+    private static final String CORRECT_PASSWORD = "Пароль может содержать латинские буквы, цифры либо, знак: \"_\".\nНе менее 8-ми символов и не более 20-ти.\nВведите повторно:";
+    private static final String PASSWORD_MISMATCH = "Пароли не совпадают. Введите пароль заново:";
 
     public static void checkAuthorization(String login, String password, String passwordConfirm) {
         Scanner scanner = new Scanner(System.in);
         try {
-            if (!login.matches("_*\\d*?[A-Za-z_]+\\d*_?") && !(login.length() >= 20)) {
+            if (!login.matches("[A-Za-z0-9_]{3,20}+")) {
                 throw new WrongLoginException(CORRECT_LOGIN);
             } else {
-                if (!password.matches("_*\\d*?[A-Za-z_]+\\d*_?") && !(password.length() >= 20)) {
+                if (!password.matches("[A-Za-z0-9_]{8,20}+")) {
                     throw new WrongPasswordException(CORRECT_PASSWORD);
                 } else {
                     System.out.println("Подтвердите пароль:");
@@ -28,12 +28,14 @@ public class Authorization {
             }
         } catch (WrongLoginException exception) {
             System.out.println(exception.getMessage());
-            String inputLogin = scanner.nextLine();
-            checkAuthorization(inputLogin, password, passwordConfirm);
+            login = scanner.nextLine();
+            checkAuthorization(login, password, passwordConfirm);
         } catch (WrongPasswordException exception) {
             System.out.println(exception.getMessage());
-            String inputPassword = scanner.nextLine();
-            checkAuthorization(login, inputPassword, passwordConfirm);
+            password = scanner.nextLine();
+            checkAuthorization(login, password, passwordConfirm);
+        } finally {
+            scanner.close();
         }
     }
 }
