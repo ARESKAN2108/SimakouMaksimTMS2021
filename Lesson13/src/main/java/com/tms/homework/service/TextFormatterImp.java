@@ -37,6 +37,23 @@ public class TextFormatterImp implements TextFormatter {
             }
         }
     }
+
+    @Override
+    public void getPalindrome(String[] strings) throws NullPointerException {
+        for (String string : strings) {
+            if (string == null) {
+                throw new NullPointerException("Заполните весь массив словами и перезапустите программу");
+            }
+            if (string.length() >= 2) {
+                if (string.equalsIgnoreCase(new StringBuilder(string).reverse().toString())) {
+                    System.out.println(string);
+                }
+            }
+        }
+    }
 }
+
+
+
 
 
