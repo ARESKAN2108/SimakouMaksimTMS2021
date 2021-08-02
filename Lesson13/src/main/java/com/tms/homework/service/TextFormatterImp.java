@@ -57,6 +57,29 @@ public class TextFormatterImp implements TextFormatter {
         }
         return palindromeList;
     }
+
+    //4 пунк буду делать согласно задания. Не буду методы объявлять в интерфейсе
+    //создам здесь статические методы и вызову их в мейне
+
+    public static String[] getArrayText(String text) {
+        return text.split("\\.");
+    }
+
+    public static int getCountWords(String string) {
+        return string.split("[^ ]\s").length;
+    }
+
+    public static boolean isSentenceHasPalindrome(String string) {
+        boolean isHasPalindrome = false;
+        String[] arrayWords = string.split(" ");
+        for (String str : arrayWords) {
+            boolean isWordPalindrome = str.length() > 1 && str.equalsIgnoreCase(new StringBuilder(str).reverse().toString());
+            if (isWordPalindrome) {
+                isHasPalindrome = true;
+            }
+        }
+        return isHasPalindrome;
+    }
 }
 
 

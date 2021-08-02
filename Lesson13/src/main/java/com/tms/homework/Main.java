@@ -15,5 +15,18 @@ public class Main {
         }
         System.out.println(textFormatter.getSubString("Привет.Меня зовут Алексей.Я из города Воронежа."));
         System.out.println(textFormatter.getSomeString()); // замена символов
+
+        // 4 пункт
+        String text = "Фильм Довод. Он очень интересный. Советую его посмотреть. Мне понравился. Потоп.";
+        String[] arrayText = TextFormatterImp.getArrayText(text);
+        for (String arraySentence : arrayText) {
+            if (TextFormatterImp.isSentenceHasPalindrome(arraySentence)) {
+                System.out.println(arraySentence.trim());
+            } else {
+                if (TextFormatterImp.getCountWords(arraySentence) >= 3 && TextFormatterImp.getCountWords(arraySentence) <= 5) {
+                    System.out.println(arraySentence.trim());
+                }
+            }
+        }
     }
 }
