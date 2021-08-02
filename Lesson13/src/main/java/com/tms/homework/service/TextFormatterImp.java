@@ -1,5 +1,7 @@
 package com.tms.homework.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static com.tms.homework.util.Constants.*;
@@ -7,14 +9,16 @@ import static com.tms.homework.util.Constants.*;
 public class TextFormatterImp implements TextFormatter {
 
     @Override
-    public void getSubString(String str) throws StringIndexOutOfBoundsException {
+    public String getSubString(String str) {
         if (str == null || str.equals("")) {
-            System.out.println("Пустая строка");
+            return null;
         } else {
-            if (!(str.contains("А") && str.contains("В"))) {
-                throw new StringIndexOutOfBoundsException(CONST);
+            int indexA = str.indexOf('А');
+            int indexB = str.indexOf('В');
+            if (indexA >= 0 && indexB >= 0) {
+                return str.substring(str.indexOf('А'), str.lastIndexOf('В'));
             } else {
-                System.out.println(str.substring(str.indexOf('А'), str.lastIndexOf('В')));
+                return SUBSTRING_VALIDATION_MESSAGE;
             }
         }
     }
@@ -27,9 +31,9 @@ public class TextFormatterImp implements TextFormatter {
             if (scanner.hasNextLine()) {
                 String inputUser = scanner.nextLine();
                 if (inputUser.length() >= 3) {
-                    return inputUser.replace(inputUser.charAt(3), inputUser.charAt(0));
+                    return inputUser.replace(inputUser.charAt(2), inputUser.charAt(0));
                 } else {
-                    return "Нужна строка побольше";
+                    return NEED_A_BIGGER_STRING;
                 }
             } else {
                 System.out.println("Некорректный ввод");
@@ -39,17 +43,19 @@ public class TextFormatterImp implements TextFormatter {
     }
 
     @Override
-    public void getPalindrome(String[] strings) throws NullPointerException {
+    public List<String> getPalindrome(String[] strings) throws NullPointerException {
+        List<String> palindromeList = new ArrayList<>();
         for (String string : strings) {
             if (string == null) {
-                throw new NullPointerException("Заполните весь массив словами и перезапустите программу");
+                throw new NullPointerException(FILL_THE_ARRAY);
             }
             if (string.length() >= 2) {
                 if (string.equalsIgnoreCase(new StringBuilder(string).reverse().toString())) {
-                    System.out.println(string);
+                    palindromeList.add(string);
                 }
             }
         }
+        return palindromeList;
     }
 }
 

@@ -9,12 +9,11 @@ public class Main {
         String[] words = new String[]{"Дед", "Слово", "Заказ", "Мандарин", "Программа", "Потоп"};
 
         try {
-            textFormatter.getPalindrome(words); // Слова палиндромы из массива
-            textFormatter.getSubString("Привет.Меня зовут Алексей.Я из города Воронежа.");
-        } catch (StringIndexOutOfBoundsException | NullPointerException exception) {
+            System.out.println(textFormatter.getPalindrome(words)); // Слова палиндромы из массива
+        } catch (NullPointerException exception) {
             System.out.println(exception.getMessage());
         }
-
-        System.out.println(textFormatter.getSomeString()); // замена символов
+         System.out.println(textFormatter.getSubString("Привет.Меня зовут Алексей.Я из города Воронежа."));
+         System.out.println(textFormatter.getSomeString()); // замена символов
     }
 }

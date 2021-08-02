@@ -1,9 +1,11 @@
 package com.tms.homework.service;
 
+import java.util.List;
+
 public interface TextFormatter {
-    void getSubString(String str);
+    String getSubString(String str);
 
     String getSomeString();
 
-    void getPalindrome(String[] strings);
+    List<String> getPalindrome(String[] strings);
 }
