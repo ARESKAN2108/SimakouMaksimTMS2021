@@ -13,7 +13,7 @@ public class Main {
         } catch (NullPointerException exception) {
             System.out.println(exception.getMessage());
         }
-         System.out.println(textFormatter.getSubString("Привет.Меня зовут Алексей.Я из города Воронежа."));
-         System.out.println(textFormatter.getSomeString()); // замена символов
+        System.out.println(textFormatter.getSubString("Привет.Меня зовут Алексей.Я из города Воронежа."));
+        System.out.println(textFormatter.getSomeString()); // замена символов
     }
 }
