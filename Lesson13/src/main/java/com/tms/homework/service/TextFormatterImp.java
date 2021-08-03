@@ -66,19 +66,18 @@ public class TextFormatterImp implements TextFormatter {
     }
 
     public static int getCountWords(String string) {
-        return string.split("[^ ]\s").length;
+        return string.split("[^ ]\\s").length;
     }
 
     public static boolean isSentenceHasPalindrome(String string) {
-        boolean isHasPalindrome = false;
         String[] arrayWords = string.split(" ");
         for (String str : arrayWords) {
             boolean isWordPalindrome = str.length() > 1 && str.equalsIgnoreCase(new StringBuilder(str).reverse().toString());
             if (isWordPalindrome) {
-                isHasPalindrome = true;
+                return true;
             }
         }
-        return isHasPalindrome;
+        return false;
     }
 }
 
