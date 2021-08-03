@@ -58,7 +58,7 @@ public class TextFormatterImp implements TextFormatter {
         return palindromeList;
     }
 
-    //4 пунк буду делать согласно задания. Не буду методы объявлять в интерфейсе
+    //4 пункт буду делать согласно задания. Не буду методы объявлять в интерфейсе
     //создам здесь статические методы и вызову их в мейне
 
     public static String[] getArrayText(String text) {
