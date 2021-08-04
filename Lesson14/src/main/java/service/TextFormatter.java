@@ -8,7 +8,7 @@ public class TextFormatter {
     public static List<String> getPalindrome(List<String> strings) {
         List<String> palindromeList = new ArrayList<>();
         for (String element : strings) {
-            if (element.matches("[0-9]+")) {
+            if (element.matches("\\d+")) {
                 continue;
             }
             if (element.equalsIgnoreCase(new StringBuilder(element).reverse().toString())) {
