@@ -1,13 +1,9 @@
 package service;
 
-import java.io.BufferedReader;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-
-import static utils.Constants.*;
 
 public class TextFormatter {
 
@@ -24,18 +20,24 @@ public class TextFormatter {
         return palindromeList;
     }
 
-    public static void readAndWrite(String path) {
-        try (BufferedReader fileReader = new BufferedReader(new FileReader(path));
-             FileOutputStream fileOutputStream = new FileOutputStream(OUTPUT_PATH_FILE)) {
-            List<String> listOfLines = new ArrayList<>();
-            String line = fileReader.readLine();
+    public static List<String> read(String filePath) {
+        List<String> listOfWords = new ArrayList<>();
+        try (BufferedReader buffReader = new BufferedReader(new FileReader(filePath))) {
+            String line = buffReader.readLine();
             while (line != null) {
-                listOfLines.add(line);
-                line = fileReader.readLine();
+                listOfWords.add(line);
+                line = buffReader.readLine();
             }
-            List<String> palindromeList = TextFormatter.getPalindrome(listOfLines);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return listOfWords;
+    }
+
+    public static void write(List<String> palindromeList, String filePath) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(filePath)) {
             for (String palindrome : palindromeList) {
-                fileOutputStream.write(palindrome.getBytes());
+                fileOutputStream.write(palindrome.getBytes(StandardCharsets.UTF_8));
                 fileOutputStream.write("\n".getBytes());
             }
         } catch (IOException e) {
