@@ -72,7 +72,7 @@ public class TextFormatter {
     //Split строки.
     //Делаем сплит строки.
     public static String[] getSplitString(String replaceString) {
-        return getReplaceLine(replaceString).split("\\.+|!|\\?");
+        return getReplaceLine(replaceString).split("\\.+|!+|\\?+");
     }
 
     //Количество слов в строке
@@ -99,6 +99,26 @@ public class TextFormatter {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    //методы 3 части домашнего задания
+
+    //сплит для блэк листа из-за запятых в файле
+    public static String[] getSplitBlackList(String blackList) {
+        return blackList.split(",");
+    }
+
+    public static List<String> getObsceneSentence(String[] text, String[] blackList) {
+        List<String> List = new ArrayList<>();
+        for (String textLine : text) {
+            for (String blackListWord : blackList) {
+                boolean contains = textLine.toLowerCase().contains(blackListWord.toLowerCase());
+                if (contains) {
+                    List.add(textLine);
+                }
+            }
+        }
+        return List;
     }
 }
 
