@@ -26,8 +26,8 @@ public class UserConsoleInput {
     }
 
     public static String readLineFromConsole() {
-        System.out.println("Введите наименование товара:");
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите новое наименование товара:");
         return scanner.nextLine();
     }
 }

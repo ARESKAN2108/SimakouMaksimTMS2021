@@ -113,8 +113,7 @@ public class UserServiceImpl implements UserService {
 
     private void addProduct() {
         Product product = new Product();
-        System.out.println("Задайте id товара:");
-        int userId = readNumberFromConsole("Задайте id", Integer.MAX_VALUE); //некрасиво
+        int userId = readNumberFromConsole("Задайте id", Integer.MAX_VALUE);
         try {
             if (shopService.getAllProduct().stream().allMatch(pr -> pr.getId() != userId)) {
                 System.out.println("Введенный id подходит.");
@@ -125,6 +124,7 @@ public class UserServiceImpl implements UserService {
             product.setName(readLineFromConsole());
             product.setPrice(readNumberFromConsole("Задайте цену товара", Integer.MAX_VALUE));
             shopService.addProduct(product);
+            System.out.println("Товар добавлен!");
         } catch (ProductAlreadyExistsException e) {
             System.out.println(e.getMessage());
         }
@@ -158,6 +158,7 @@ public class UserServiceImpl implements UserService {
         Product product = findProductById(readNumberFromConsole("Задайте id", Integer.MAX_VALUE));
         try {
             if (product != null) {
+                System.out.println("Товар найден.\n" + product);
                 String name = readLineFromConsole();
                 int price = readNumberFromConsole("Задайте цену товара", Integer.MAX_VALUE);
                 product.setName(name);
