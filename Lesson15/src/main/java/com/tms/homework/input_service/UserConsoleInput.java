@@ -27,7 +27,15 @@ public class UserConsoleInput {
 
     public static String readLineFromConsole() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите новое наименование товара:");
-        return scanner.nextLine();
+        String userProduct;
+        do {
+            System.out.println("Введите корректное имя товара.");
+            while (!scanner.hasNextLine()) {
+                System.out.println("Это не может быть именем");
+                scanner.next();
+            }
+            userProduct = scanner.nextLine();
+        } while (!userProduct.matches("[A-z\\-А-яё\\s]+")); //Для русских и англ. букв
+        return userProduct;
     }
 }
