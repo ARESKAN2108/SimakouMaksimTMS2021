@@ -19,10 +19,11 @@ public class UserConsoleInput {
     }
 
     private static boolean isNumberNotFit(int number, int numberFit) {
-        if (number < 1 || number > numberFit) {
+        boolean isTrueNumber = number < 1 || number > numberFit;
+        if (isTrueNumber) {
             System.out.println("Число не соответствует допустимому.");
         }
-        return number < 1 || number > numberFit;
+        return isTrueNumber;
     }
 
     public static String readLineFromConsole() {

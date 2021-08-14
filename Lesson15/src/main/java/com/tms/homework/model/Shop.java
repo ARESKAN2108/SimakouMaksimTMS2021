@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public class Shop {
     private List<Product> products;
-    private boolean RunShop = true;
+    private boolean runShop = true;
 
     public List<Product> getProducts() {
         if (products == null) {

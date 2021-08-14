@@ -13,7 +13,8 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public void addProduct(Product product) throws ProductAlreadyExistsException {
-        if (shop.getProducts().stream().noneMatch(pr -> pr.getId() == product.getId())) {
+        if (shop.getProducts().stream()
+                .noneMatch(pr -> pr.getId() == product.getId())) {
             shop.getProducts().add(product);
         } else {
             throw new ProductAlreadyExistsException("Товар с таким Id " + product.getId() + " уже существует");
