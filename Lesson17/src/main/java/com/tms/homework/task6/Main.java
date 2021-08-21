@@ -41,7 +41,6 @@ public class Main {
                 4, List.of(5)
         );
 
-
         booksList.forEach(libraryService::addBook);
         readers.forEach(libraryService::addReader);
 
