@@ -9,4 +9,6 @@ public interface MessageService {
 
     List<EmailAddress> sendMessage(String message, List<Reader> readers);
 
+    List<EmailAddress> sendMessageByAgreeReaders(String message, List<Reader> readers);
+
 }

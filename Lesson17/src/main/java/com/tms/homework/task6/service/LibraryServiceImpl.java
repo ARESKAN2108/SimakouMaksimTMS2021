@@ -6,8 +6,12 @@ import com.tms.homework.task6.model.Reader;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.partitioningBy;
+import static java.util.stream.Collectors.toList;
 
 public class LibraryServiceImpl implements LibraryService {
     private final Library library;
@@ -20,7 +24,7 @@ public class LibraryServiceImpl implements LibraryService {
     public List<Book> getAllSortedBooksByYear() {
         return getAllBooks().stream()
                 .sorted(Comparator.comparingInt(Book::getYearOfPublishing))
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     @Override
@@ -52,7 +56,7 @@ public class LibraryServiceImpl implements LibraryService {
     public List<Reader> findAllReadersAgree() {
         return getAllReader().stream()
                 .filter(Reader::isReaderConsent)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     @Override
@@ -102,4 +106,18 @@ public class LibraryServiceImpl implements LibraryService {
         return readerBooks;
     }
 
+    public List<Book> getBooksOfReaders() {
+        return getAllReader().stream()
+                .flatMap(reader -> findAllBooksByReader(reader).stream())
+                .distinct()
+                .sorted(Comparator.comparing(Book::getId))
+                .collect(toList());
+    }
+
+    public Map<Boolean, List<Reader>> checkBookByAuthor() {
+        return getAllReader().stream()
+                .collect(partitioningBy(reader -> findAllBooksByReader(reader).stream()
+                        .anyMatch(book -> book.getAuthor().equals("Александр Пушкин")), toList())
+                );
+    }
 }

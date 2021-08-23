@@ -14,4 +14,12 @@ public class MessageServiceImpl implements MessageService {
                 .map(r -> new EmailAddress(r.getEmailAddress().getAddressName(), message))
                 .collect(Collectors.toList());
     }
+
+    public List<EmailAddress> sendMessageByAgreeReaders(String message, List<Reader> readers) {
+        return readers.stream()
+                .filter(Reader::isReaderConsent)
+                .filter(reader -> reader.getBorrowedBooks().size() > 1)
+                .map(r -> new EmailAddress(r.getEmailAddress().getAddressName(),message))
+                .collect(Collectors.toList());
+    }
 }

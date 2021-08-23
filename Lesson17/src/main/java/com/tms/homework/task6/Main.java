@@ -11,7 +11,6 @@ import com.tms.homework.task6.service.MessageServiceImpl;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,8 +34,8 @@ public class Main {
         );
 
         Map<Integer, List<Integer>> readerBookList = Map.of(
-                1, List.of(1, 2, 3, 4),
-                2, List.of(2, 3, 5),
+                1, List.of(1),
+                2, List.of(2, 3, 4),
                 3, List.of(4, 2, 5),
                 4, List.of(5)
         );
@@ -45,15 +44,25 @@ public class Main {
         readers.forEach(libraryService::addReader);
 
         var key = readerBookList.keySet();
-        key.forEach(k -> readerBookList.get(k).forEach(value -> libraryService.addBookToReader(k, value))); // не работает
+        key.forEach(k -> readerBookList.get(k)
+                .forEach(value -> libraryService.addBookToReader(k, value)));
 
         libraryService.getAllSortedBooksByYear().forEach(System.out::println);
 
-        messageService.sendMessage("Библиотека закрывается", readers).forEach(System.out::println);
+        messageService.sendMessage("Библиотека закрывается", readers)
+                .forEach(System.out::println);
 
         messageService.sendMessage("Для согласных", libraryService.findAllReadersAgree())
                 .forEach(System.out::println);
 
+        messageService.sendMessageByAgreeReaders("Привет из библиотеки!", readers)
+                .forEach(System.out::println);
 
+        libraryService.getBooksOfReaders().forEach(System.out::println);
+
+        Map<Boolean, List<Reader>> checkBook = libraryService.checkBookByAuthor();
+        for (Map.Entry<Boolean, List<Reader>> entry : checkBook.entrySet()) {
+            System.out.println(entry.getKey() + " - " + entry.getValue());
+        }
     }
 }
