@@ -4,6 +4,7 @@ import com.tms.homework.task6.model.Book;
 import com.tms.homework.task6.model.Reader;
 
 import java.util.List;
+import java.util.Map;
 
 public interface LibraryService {
 
@@ -28,5 +29,9 @@ public interface LibraryService {
     void addBookToReader(int readerInt, int bookId);
 
     void receiveBookToLibrary(int bookId, int readerId);
+
+    List<Book> getBooksOfReaders();
+
+    Map<Boolean, List<Reader>> checkBookByAuthor();
 
 }
