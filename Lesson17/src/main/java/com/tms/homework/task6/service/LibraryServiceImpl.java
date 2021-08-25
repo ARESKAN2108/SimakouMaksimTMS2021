@@ -1,6 +1,7 @@
 package com.tms.homework.task6.service;
 
 import com.tms.homework.task6.model.Book;
+import com.tms.homework.task6.model.EmailAddress;
 import com.tms.homework.task6.model.Library;
 import com.tms.homework.task6.model.Reader;
 
@@ -10,8 +11,8 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.partitioningBy;
-import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.mapping;
 
 public class LibraryServiceImpl implements LibraryService {
     private final Library library;
@@ -119,5 +120,36 @@ public class LibraryServiceImpl implements LibraryService {
                 .collect(partitioningBy(reader -> findAllBooksByReader(reader).stream()
                         .anyMatch(book -> book.getAuthor().equals("Александр Пушкин")), toList())
                 );
+    }
+
+    @Override
+    public Integer getMaxBooks() {
+        return getAllReader().stream()
+                .map(Reader::getBorrowedBooks)
+                .map(List::size)
+                .reduce(0, (max, size) -> size > max ? size : max);
+    }
+
+    @Override
+    public Map<String, List<EmailAddress>> sendMessageByGroup() {
+        return getAllReader().stream()
+                .filter(Reader::isReaderConsent)
+                .collect(groupingBy(r -> r.getBorrowedBooks().size() > 2 ? "TOO_MUCH" : "OK",
+                        mapping(r -> new EmailAddress(r.getEmailAddress().getAddressName()), Collectors.toList())));
+    }
+
+    @Override
+    public Map<String, List<Reader>> getReadersMap() {
+        return getAllReader().stream()
+                .filter(Reader::isReaderConsent)
+                .collect(groupingBy(r -> r.getBorrowedBooks().size() > 2 ? "TOO_MUCH" : "OK"));
+    }
+
+    @Override
+    public Map<String, String> getReaderFullNameMap() {
+        return getAllReader().stream()
+                .filter(Reader::isReaderConsent)
+                .collect(groupingBy(r -> r.getBorrowedBooks().size() > 2 ? "TOO_MUCH" : "OK",
+                        mapping(Reader::getFullName, joining(", ", "{", "}"))));
     }
 }

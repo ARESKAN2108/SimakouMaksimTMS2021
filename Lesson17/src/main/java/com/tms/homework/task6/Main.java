@@ -64,5 +64,13 @@ public class Main {
         for (Map.Entry<Boolean, List<Reader>> entry : checkBook.entrySet()) {
             System.out.println(entry.getKey() + " - " + entry.getValue());
         }
+
+        System.out.println(libraryService.getMaxBooks());
+
+        System.out.println(libraryService.sendMessageByGroup());
+
+        System.out.println(libraryService.getReadersMap());
+
+        System.out.println(libraryService.getReaderFullNameMap());
     }
 }

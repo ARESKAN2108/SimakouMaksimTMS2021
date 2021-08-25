@@ -1,6 +1,7 @@
 package com.tms.homework.task6.service;
 
 import com.tms.homework.task6.model.Book;
+import com.tms.homework.task6.model.EmailAddress;
 import com.tms.homework.task6.model.Reader;
 
 import java.util.List;
@@ -33,5 +34,13 @@ public interface LibraryService {
     List<Book> getBooksOfReaders();
 
     Map<Boolean, List<Reader>> checkBookByAuthor();
+
+    Integer getMaxBooks();
+
+    Map<String, List<EmailAddress>> sendMessageByGroup();
+
+    Map<String, List<Reader>> getReadersMap();
+
+    Map<String, String> getReaderFullNameMap();
 
 }
